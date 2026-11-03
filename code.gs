@@ -887,3 +887,42 @@ function getExamResultsForAdmin() {
     return { success: false, message: "Gagal mengambil data admin: " + err.message };
   }
 }
+
+/** API bridge untuk frontend Vercel. Tambahkan setelah seluruh fungsi backend. */
+function doPost(e) {
+  try {
+    const body = JSON.parse((e && e.postData && e.postData.contents) || "{}");
+    const expected = PropertiesService.getScriptProperties().getProperty("CBT_API_SECRET");
+    if (!expected || body.secret !== expected) {
+      return jsonApiResponse_({ success: false, message: "Akses API tidak sah." });
+    }
+
+    const action = String(body.action || "");
+    const data = body.data || {};
+    let result;
+    switch (action) {
+      case "verifyStudentLogin":
+        result = verifyStudentLogin(data.nama, data.token); break;
+      case "verifyAdminLogin":
+        result = verifyAdminLogin(data.password); break;
+      case "getQuestionsForStudent":
+        result = getQuestionsForStudent(); break;
+      case "submitStudentExam":
+        result = submitStudentExam(data.payload); break;
+      case "getExamResultsForAdmin":
+        result = getExamResultsForAdmin(); break;
+      case "saveSingleQuestion":
+        result = saveSingleQuestion(data.qData); break;
+      default:
+        result = { success: false, message: "Action API tidak dikenal: " + action };
+    }
+    return jsonApiResponse_(result);
+  } catch (err) {
+    return jsonApiResponse_({ success: false, message: "API backend error: " + err.message });
+  }
+}
+
+function jsonApiResponse_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}

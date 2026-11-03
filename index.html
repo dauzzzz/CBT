@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>EDUTEST - Digital Assessment Platform | Kecamatan Turi</title>
+  <title>Try Out TKA - Matematika | SD Negeri/Swasta Se-Kecamatan Turi</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome CDN -->
@@ -67,8 +67,8 @@
         <span class="px-3 py-1 bg-amber-400/20 border border-amber-300/40 text-amber-200 rounded-full text-xs font-bold tracking-wider uppercase">
           Computer Based Test (CBT)
         </span>
-        <h1 class="text-2xl font-extrabold mt-2">Digital Assessment Platform</h1>
-        <p class="text-xs text-blue-100 mt-1 font-medium">Platform Ujian dan Evaluasi Pembelajaran • Kecamatan Turi</p>
+        <h1 class="text-2xl font-extrabold mt-2">Try Out TKA - Matematika</h1>
+        <p class="text-xs text-blue-100 mt-1 font-medium">SD Negeri/Swasta Se-Kecamatan Turi • Kelas 6 / Fase C</p>
       </div>
 
       <!-- Tab Switch Role -->
@@ -156,8 +156,8 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 id="headerExamTitle" class="font-extrabold text-sm md:text-base tracking-tight">Digital Assessment Platform</h1>
-            <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full">Kecamatan Turi</span>
+            <h1 id="headerExamTitle" class="font-extrabold text-sm md:text-base tracking-tight">Try Out TKA - Matematika</h1>
+            <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full">Kelas 6 / Fase C</span>
           </div>
           <p id="headerSchoolName" class="text-[11px] text-slate-300">SD Negeri/Swasta Se-Kecamatan Turi</p>
         </div>
@@ -338,7 +338,7 @@
         </div>
         <div>
           <h1 class="font-extrabold text-base">Dashboard Guru / Administrator CBT</h1>
-          <p class="text-xs text-slate-400">Digital Assessment Platform • Platform Ujian dan Evaluasi Pembelajaran</p>
+          <p class="text-xs text-slate-400">Try Out TKA Matematika • SD Negeri/Swasta Se-Kecamatan Turi</p>
         </div>
       </div>
 
@@ -667,7 +667,7 @@
       adminQuestions: []
     };
 
-    const STORAGE_KEY = "CBT_TKA_Digital Assessment Platform_STATE_V1";
+    const STORAGE_KEY = "CBT_TKA_MATEMATIKA_STATE_V1";
 
     // ========================================================================
     // 1. UTILITAS LOADING & LOGIKA LOGIN
@@ -746,7 +746,7 @@
     }
 
     function loadStudentQuestionsAndStart() {
-      showLoading("Memuat Paket Soal TKA...", "Mengambil 30 soal Digital Assessment Platform tanpa kunci jawaban");
+      showLoading("Memuat Paket Soal TKA...", "Mengambil 30 soal Matematika tanpa kunci jawaban");
       google.script.run
         .withSuccessHandler(res => {
           hideLoading();
